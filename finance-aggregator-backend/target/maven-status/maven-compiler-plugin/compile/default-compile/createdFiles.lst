@@ -1,1 +1,16 @@
+com/acme/finance/config/SecurityConfig.class
+com/acme/finance/auth/AuthService.class
+com/acme/finance/config/JwtAuthFilter.class
+com/acme/finance/domain/bank/BankAccount.class
+com/acme/finance/repo/UserRepository.class
+com/acme/finance/repo/TransactionRepository.class
+com/acme/finance/config/PasswordConfig.class
+com/acme/finance/domain/txn/Transaction.class
+com/acme/finance/config/JwtService.class
+com/acme/finance/auth/dto/RegisterRequest.class
+com/acme/finance/domain/user/User.class
+com/acme/finance/domain/budget/Budget.class
 com/acme/finance/FinanceAggregatorApplication.class
+com/acme/finance/auth/dto/AuthResponse.class
+com/acme/finance/auth/dto/LoginRequest.class
+com/acme/finance/auth/AuthController.class
