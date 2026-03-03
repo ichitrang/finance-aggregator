@@ -13,3 +13,7 @@ target/
 
 # Environment files
 .env
+
+application.properties
+
+node_modules/
