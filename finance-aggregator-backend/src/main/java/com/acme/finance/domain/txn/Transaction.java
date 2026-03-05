@@ -10,15 +10,17 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "transactions",
-  uniqueConstraints = @UniqueConstraint(
-    name = "uk_txn_provider_id",
-    columnNames = {"user_id", "provider", "provider_txn_id"}
-  )
+@Table(
+        name = "transactions",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_txn_provider_id",
+                columnNames = {"user_id", "provider", "provider_txn_id"}
+        )
 )
 public class Transaction {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue
   private UUID id;
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -62,26 +64,130 @@ public class Transaction {
   @Column(name = "is_pending", nullable = false)
   private boolean pending = false;
 
-  @Column(name="created_at", nullable=false)
+  @Column(name = "created_at", nullable = false)
   private Instant createdAt = Instant.now();
 
-  @Column(name="updated_at", nullable=false)
+  @Column(name = "updated_at", nullable = false)
   private Instant updatedAt = Instant.now();
 
   @PreUpdate
-  void preUpdate(){ this.updatedAt = Instant.now(); }
+  void preUpdate() {
+    this.updatedAt = Instant.now();
+  }
 
-  // getters/setters
-  public UUID getId() { return id; }
-  public void setUser(User user) { this.user = user; }
-  public void setBankAccount(BankAccount bankAccount) { this.bankAccount = bankAccount; }
-  public void setProviderTxnId(String providerTxnId) { this.providerTxnId = providerTxnId; }
-  public void setPostedDate(LocalDate postedDate) { this.postedDate = postedDate; }
-  public void setAmount(BigDecimal amount) { this.amount = amount; }
-  public BigDecimal getAmount() { return amount; }
-  public LocalDate getPostedDate() { return postedDate; }
-  public String getCategory() { return category; }
-  public void setCategory(String category) { this.category = category; }
-  public void setMerchantName(String merchantName) { this.merchantName = merchantName; }
-  public String getMerchantName() { return merchantName; }
+  // ---------- Getters ----------
+
+  public UUID getId() {
+    return id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public BankAccount getBankAccount() {
+    return bankAccount;
+  }
+
+  public String getProvider() {
+    return provider;
+  }
+
+  public String getProviderTxnId() {
+    return providerTxnId;
+  }
+
+  public LocalDate getPostedDate() {
+    return postedDate;
+  }
+
+  public BigDecimal getAmount() {
+    return amount;
+  }
+
+  public String getCurrencyCode() {
+    return currencyCode;
+  }
+
+  public String getMerchantName() {
+    return merchantName;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public String getCategoryDetailed() {
+    return categoryDetailed;
+  }
+
+  public String getTxnType() {
+    return txnType;
+  }
+
+  public boolean isPending() {
+    return pending;
+  }
+
+  public Instant getCreatedAt() {
+    return createdAt;
+  }
+
+  public Instant getUpdatedAt() {
+    return updatedAt;
+  }
+
+  // ---------- Setters ----------
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setBankAccount(BankAccount bankAccount) {
+    this.bankAccount = bankAccount;
+  }
+
+  public void setProviderTxnId(String providerTxnId) {
+    this.providerTxnId = providerTxnId;
+  }
+
+  public void setPostedDate(LocalDate postedDate) {
+    this.postedDate = postedDate;
+  }
+
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
+
+  public void setCurrencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
+  }
+
+  public void setMerchantName(String merchantName) {
+    this.merchantName = merchantName;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public void setCategoryDetailed(String categoryDetailed) {
+    this.categoryDetailed = categoryDetailed;
+  }
+
+  public void setTxnType(String txnType) {
+    this.txnType = txnType;
+  }
+
+  public void setPending(boolean pending) {
+    this.pending = pending;
+  }
 }
